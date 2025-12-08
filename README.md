@@ -3,8 +3,19 @@
 ## test
 ![Coverage](./coverage-badge.svg)
 
-
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ClassyAlexking_Mobile-pitching&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=ClassyAlexking_Mobile-pitching)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-highlight.svg)](https://sonarcloud.io/summary/new_code?id=ClassyAlexking_Mobile-pitching)
 
 
 ## 📋 MỤC LỤC
@@ -16,9 +27,14 @@
 5. [Hướng Dẫn Chạy Test](#hướng-dẫn-chạy-test)
 6. [Chi Tiết Test Cases](#chi-tiết-test-cases)
 7. [Kết Quả và Coverage](#kết-quả-và-coverage)
-8. [Troubleshooting](#troubleshooting)
-9. [Best Practices](#best-practices)
-10. [Tài Liệu Tham Khảo](#tài-liệu-tham-khảo)
+8. [Giới thiệu SonarCloud](#giới-thiệu-sonarcloud)
+9. [Cài đặt SonarCloud](#cài-đặt-sonarcloud)
+10. [Cấu hình GitHub Actions](#cấu-hình-github-actions)
+11. [Cấu hình SonarCloud cho Project](#cấu-hình-sonarcloud-cho-project)
+12. [Chạy Workflow và Kiểm tra Kết quả](#chạy-workflow-và-kiểm-tra-kết-quả)
+13. [Troubleshooting](#troubleshooting)
+14. [Best Practices](#best-practices)
+15. [Tài Liệu Tham Khảo](#tài-liệu-tham-khảo)
 
 ---
 
@@ -942,6 +958,396 @@ All files          |    2.74 |     4.55 |    2.54 |    2.87 |
 
 ---
 
+## 🎯 GIỚI THIỆU SONARCLOUD
+
+### SonarCloud là gì?
+
+**SonarCloud** là dịch vụ cloud-based giúp phân tích chất lượng code tự động, cung cấp:
+
+- ✅ **Code Quality Analysis**: Phát hiện bug, lỗi bảo mật
+- ✅ **Code Coverage**: Theo dõi test coverage
+- ✅ **Code Smells**: Phát hiện code không tối ưu
+- ✅ **Security Vulnerabilities**: Cảnh báo lỗ hổng bảo mật
+- ✅ **Technical Debt**: Đánh giá độ phức tạp và nợ kỹ thuật
+
+### Tại sao cần tích hợp SonarCloud?
+
+1. **Continuous Inspection**: Kiểm tra chất lượng code liên tục
+2. **Quality Gates**: Đặt tiêu chuẩn chất lượng bắt buộc
+3. **Pull Request Analysis**: Phân tích code trước khi merge
+4. **Trend Analysis**: Theo dõi xu hướng chất lượng code
+5. **Team Collaboration**: Toàn team có thể xem và cải thiện code
+
+---
+
+## ⚙️ CÀI ĐẶT SONARCLOUD
+
+### Bước 1: Tạo tài khoản SonarCloud
+
+1. Truy cập: https://sonarcloud.io/
+2. Đăng nhập bằng **GitHub account**
+3. Authorize SonarCloud truy cập vào GitHub repositories
+
+### Bước 2: Cài đặt SonarCloud GitHub App
+
+1. Vào **Organization Settings** trên SonarCloud
+2. Chọn **GitHub App Integration**
+3. Click **Install GitHub App**
+4. Chọn repositories hoặc **All repositories**
+
+### Bước 3: Tạo Organization và Project
+
+1. **Tạo Organization** (nếu chưa có):
+   - Tên: `your-github-username` (tự động từ GitHub)
+   
+2. **Tạo Project**:
+   - Chọn repository: `btl-react-native`
+   - Key: sẽ tự động tạo
+   - Display Name: `BTL React Native - MindCare App`
+
+---
+
+## 🚀 CẤU HÌNH GITHUB ACTIONS
+
+### Bước 1: Tạo GitHub Secrets
+
+Trong repository GitHub:
+
+1. Vào **Settings** → **Secrets and variables** → **Actions**
+2. Click **New repository secret**
+
+**Thêm các secrets sau:**
+
+| Secret Name | Value | Lấy từ đâu |
+|-------------|-------|------------|
+| `SONAR_TOKEN` | SonarCloud token | SonarCloud → My Account → Security |
+| `EXPO_TOKEN` | Expo access token (nếu cần) | `expo login` và `expo token` |
+
+### Bước 2: Tạo Workflow File
+
+Tạo file `.github/workflows/sonarcloud.yml`:
+
+```yaml
+name: SonarCloud Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Cho phép chạy thủ công
+
+jobs:
+  test-and-analyze:
+    name: Test and Analyze
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Bước 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Cần thiết để SonarCloud phân tích đầy đủ
+      
+      # Bước 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      # Bước 3: Cache node_modules
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      # Bước 4: Install dependencies
+      - name: Install dependencies
+        run: npm ci
+      
+      # Bước 5: Run tests with coverage
+      - name: Run tests with coverage
+        run: npm run test:coverage
+      
+      # Bước 6: Upload coverage reports (nếu có)
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        if: success()
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+      
+      # Bước 7: SonarCloud Scan
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+```
+
+### Bước 3: Tạo Workflow tổng hợp cho CI/CD
+
+Tạo file `.github/workflows/ci.yml`:
+
+```yaml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: |
+            coverage/
+          retention-days: 7
+  
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run ESLint
+        run: npm run lint -- --max-warnings=0
+      
+      - name: Run TypeScript check
+        run: npx tsc --noEmit
+  
+  sonarcloud:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests with coverage
+        run: npm run test:coverage
+      
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=your-organization_btl-react-native
+            -Dsonar.organization=your-organization
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.sources=src
+            -Dsonar.test.inclusions=**/*.test.tsx,**/*.test.ts
+            -Dsonar.exclusions=node_modules/**,**/*.d.ts
+            -Dsonar.coverage.exclusions=**/*.test.tsx,**/*.test.ts
+```
+
+### Bước 4: Cập nhật package.json Scripts
+
+Thêm script ESLint (nếu chưa có):
+
+```json
+{
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-native": "^4.1.0"
+  }
+}
+```
+
+---
+
+## ⚙️ CẤU HÌNH SONARCLOUD CHO PROJECT
+
+### Bước 1: Tạo `sonar-project.properties`
+
+Tạo file `sonar-project.properties` ở root project:
+
+```properties
+# SonarCloud project identification
+sonar.projectKey=your-organization_btl-react-native
+sonar.organization=your-organization
+
+# Project metadata
+sonar.projectName=BTL React Native - MindCare App
+sonar.projectVersion=1.0.0
+
+# Source code location
+sonar.sources=src
+sonar.tests=src
+sonar.test.inclusions=**/*.test.tsx,**/*.test.ts
+sonar.exclusions=node_modules/**,**/*.d.ts,coverage/**
+
+# Language and encoding
+sonar.language=js
+sonar.sourceEncoding=UTF-8
+
+# Test coverage
+sonar.javascript.lcov.reportPaths=coverage/lcov.info
+
+# TypeScript configuration
+sonar.typescript.tsconfigPath=tsconfig.json
+
+# Quality Gate timeout (in minutes)
+sonar.qualitygate.wait=true
+sonar.qualitygate.timeout=10
+```
+
+### Bước 2: Tạo ESLint Config
+
+Tạo file `.eslintrc.js`:
+
+```javascript
+module.exports = {
+  root: true,
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-native/all',
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'react', 'react-native'],
+  env: {
+    'react-native/react-native': true,
+    jest: true,
+  },
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'react-native/no-unused-styles': 'warn',
+    'react-native/split-platform-components': 'warn',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+};
+```
+
+---
+
+## 🚀 CHẠY WORKFLOW VÀ KIỂM TRA KẾT QUẢ
+
+### Bước 1: Commit và Push Code
+
+```bash
+# Thêm các file mới
+git add .github/ package.json sonar-project.properties .eslintrc.js
+
+# Commit
+git commit -m "feat: add SonarCloud integration and GitHub Actions workflow"
+
+# Push lên GitHub
+git push origin main
+```
+
+### Bước 2: Kiểm tra GitHub Actions
+
+1. Vào GitHub repository
+2. Click tab **Actions**
+3. Xem workflow đang chạy
+
+**Expected Result:**
+- ✅ Test job: PASS
+- ✅ Lint job: PASS (hoặc chỉ warnings)
+- ✅ SonarCloud job: PASS
+
+### Bước 3: Kiểm tra SonarCloud
+
+1. Vào https://sonarcloud.io/
+2. Chọn project **BTL React Native - MindCare App**
+3. Xem **Dashboard** với các metrics:
+   - **Reliability**: A (0 bugs)
+   - **Security**: A (0 vulnerabilities)
+   - **Maintainability**: A (code smells)
+   - **Coverage**: 100% (cho OnboardingScreen)
+
+### Bước 4: Xem Chi tiết trên SonarCloud
+
+#### Tab "Issues"
+- **Bugs**: Lỗi nghiêm trọng có thể gây crash
+- **Vulnerabilities**: Lỗ hổng bảo mật
+- **Code Smells**: Code không tối ưu
+
+#### Tab "Measures"
+- **Coverage**: Test coverage theo file
+- **Duplications**: Code bị duplicate
+- **Size**: Số dòng code
+
+#### Tab "Code"
+- Xem source code với highlight các vấn đề
+- Mỗi dòng có issue sẽ có icon cảnh báo
+
+---
+
 ## 🔧 TROUBLESHOOTING
 
 ### Lỗi 1: `TypeError: Cannot read properties of undefined (reading 'get')`
@@ -1013,6 +1419,37 @@ const styles: any = { ... };
 - Sử dụng `jest.mock()` thay vì `jest.spyOn()`
 
 ---
+
+### Lỗi 7: "No coverage information will be saved because all tests were ignored"
+
+**Nguyên nhân:** Jest không tạo được coverage report
+
+**Giải pháp:**
+1. Kiểm tra `jest.config.js`:
+   ```javascript
+   collectCoverageFrom: [
+     'src/**/*.{ts,tsx}',
+     '!src/**/*.d.ts',
+     '!src/**/__tests__/**',
+   ],
+   ```
+2. Đảm bảo test chạy thành công
+3. Kiểm tra file `coverage/lcov.info` tồn tại
+
+### Lỗi 8: SonarCloud không tìm thấy coverage report
+
+**Giải pháp:**
+Thêm path cụ thể trong workflow:
+```yaml
+- name: SonarCloud Scan
+  uses: SonarSource/sonarcloud-github-action@master
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  with:
+    args: >
+      -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+```
 
 ## 💡 BEST PRACTICES
 
@@ -1158,6 +1595,16 @@ describe('Component', () => {
 
 ---
 
+## 🎯 BADGES CHO README
+
+### Thêm Badges vào README.md
+
+![alt text](image.png)
+
+Vào SonarCloud Project -> Chọn Information -> Chọn cái Badge
+
+---
+
 ## 📚 TÀI LIỆU THAM KHẢO
 
 ### Official Documentation
@@ -1173,6 +1620,10 @@ describe('Component', () => {
 3. **Testing Library Queries**
    - URL: https://testing-library.com/docs/queries/about/
    - Nội dung: Các cách query elements
+
+4. **SonarCloud Issues**: 
+   - Documentation: https://docs.sonarcloud.io/
+   - Community: https://community.sonarsource.com/
 
 ### Video Tutorials
 
@@ -1201,6 +1652,10 @@ describe('Component', () => {
 - ✅ Viết 12 test cases cho OnboardingScreen
 - ✅ Đạt 100% coverage cho OnboardingScreen.tsx
 - ✅ Tất cả test cases đều PASS
+- ✅ Tạo tài khoản SonarCloud và kết nối với GitHub
+- ✅ Cấu hình GitHub Actions workflow
+- ✅ Tạo SonarCloud project và Quality Gate
+- ✅ Tạo badges cho README
 
 ### Kết Quả
 
@@ -1226,4 +1681,3 @@ describe('Component', () => {
 4. Viết integration tests cho các flows phức tạp
 
 ---
-
